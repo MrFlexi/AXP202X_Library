@@ -295,6 +295,11 @@ github:https://github.com/lewisxhe/AXP202X_Libraries
 #define BIT_MASK(x) (1 << x)
 #define IS_OPEN(reg, channel) (bool)(reg & BIT_MASK(channel))
 
+#define AXP202_VOFF_VOLTAGE33 (0b00000111)
+#define AXP202_VOFF_VOLTAGE32 (0b00000110)
+#define AXP202_VOFF_VOLTAGE31 (0b00000101)
+
+
 enum {
     AXP202_EXTEN = 0,
     AXP202_DCDC3 = 1,
@@ -656,7 +661,6 @@ public:
     int setTimer(uint8_t minutes);
     int offTimer();
     int clearTimerStatus();
-    bool getTimerStatus();
     /**
      * param:   axp202_startup_time_t or axp192_startup_time_t
      */
@@ -747,6 +751,7 @@ public:
     int DisableCoulombcounter(void);
     int StopCoulombcounter(void);
     int ClearCoulombcounter(void);
+    int setVoffVoltage(uint8_t voltage); 
 
 
     int setGPIOMode(axp_gpio_t gpio, axp_gpio_mode_t mode);

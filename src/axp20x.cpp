@@ -461,6 +461,15 @@ int AXP20X_Class::ClearCoulombcounter(void)
     return AXP_PASS;
 }
 
+int AXP20X_Class::setVoffVoltage(uint8_t voltage )          // Battery protection
+{
+    if (!_init)
+        return AXP_NOT_INIT;
+    uint8_t val = voltage;
+    _writeByte(AXP202_VOFF_SET, 1, &val);
+    return AXP_PASS;
+}
+
 //-------------------------------------------------------
 // END
 //-------------------------------------------------------
