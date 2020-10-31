@@ -1791,6 +1791,8 @@ int AXP20X_Class::getChargeControlCur()
         if (cur > 1800 || cur < 300)return 0;
         return cur;
     case AXP192_CHIP_ID:
+        _readByte(AXP202_CHARGE1, 1, &val);
+        return val & 0x0F;
     case AXP173_CHIP_ID:
         _readByte(AXP202_CHARGE1, 1, &val);
         return val & 0x0F;
